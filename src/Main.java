@@ -60,3 +60,14 @@ public class Main {
             }
         }
     }
+    public static void visualizzaAutoInOrdineCrescente() {
+        int n = prezzi.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (prezzi[j] > prezzi[j + 1]) {
+                    scambiaElementi(j, j + 1);
+                }
+            }
+        }
+        visualizzaAuto();
+    }
