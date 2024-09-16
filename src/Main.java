@@ -41,3 +41,11 @@ public class Main {
         }
         System.out.println("Auto non trovata.");
     }
+    public static void cancellaAuto(String marca, String modello) {
+        for (int i = 0; i < marche.length; i++) {
+            if (marche[i].equals(marca) && modelli[i].equals(modello)) {
+                rimuoviElemento(i);
+                return;
+            }
+        }
+    }
