@@ -1,15 +1,18 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.util.Arrays;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+public class Main {
+    static String[] marche = new String[0];
+    static String[] modelli = new String[0];
+    static double[] prezzi = new double[0];
+    static String[] carburanti = new String[0];
+
+    public static void main(String[] args) {
+        aggiungiAuto("Fiat", "Panda", 10000, "Benzina");
+        aggiungiAuto("Volkswagen", "Golf", 20000, "Diesel");
+        visualizzaAuto();
+        ricercaAuto("Fiat", "Panda");
+        cancellaAuto("Fiat", "Panda");
+        modificaAuto("Volkswagen", "Golf", "Volkswagen", "Golf GTI", 25000, "Benzina");
+        visualizzaAutoInOrdineCrescente();
+        visualizzaModelliDiesel();
     }
-}
