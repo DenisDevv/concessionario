@@ -101,3 +101,21 @@ public class Main {
         prezzi = nuoviPrezzi;
         carburanti = nuoviCarburanti;
     }
+    private static void scambiaElementi(int i, int j) {
+        String tempMarca = marche[i];
+        marche[i] = marche[j];
+        marche[j] = tempMarca;
+
+        String tempModello = modelli[i];
+        modelli[i] = modelli[j];
+        modelli[j] = tempModello;
+
+        double tempPrezzo = prezzi[i];
+        prezzi[i] = prezzi[j];
+        prezzi[j] = tempPrezzo;
+
+        String tempCarburante = carburanti[i];
+        carburanti[i] = carburanti[j];
+        carburanti[j] = tempCarburante;
+    }
+}
