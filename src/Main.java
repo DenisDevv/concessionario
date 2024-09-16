@@ -27,3 +27,8 @@ public class Main {
         prezzi[prezzi.length - 1] = prezzo;
         carburanti[carburanti.length - 1] = carburante;
     }
+    public static void visualizzaAuto() {
+        for (int i = 0; i < marche.length; i++) {
+            System.out.println(marche[i] + " " + modelli[i] + " " + prezzi[i] + " " + carburanti[i]);
+        }
+    }
