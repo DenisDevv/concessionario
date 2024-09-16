@@ -49,3 +49,14 @@ public class Main {
             }
         }
     }
+    public static void modificaAuto(String marcaVecchia, String modelloVecchio, String marcaNuova, String modelloNuovo, double prezzoNuovo, String carburanteNuovo) {
+        for (int i = 0; i < marche.length; i++) {
+            if (marche[i].equals(marcaVecchia) && modelli[i].equals(modelloVecchio)) {
+                marche[i] = marcaNuova;
+                modelli[i] = modelloNuovo;
+                prezzi[i] = prezzoNuovo;
+                carburanti[i] = carburanteNuovo;
+                return;
+            }
+        }
+    }
