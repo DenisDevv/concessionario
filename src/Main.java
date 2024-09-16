@@ -32,3 +32,12 @@ public class Main {
             System.out.println(marche[i] + " " + modelli[i] + " " + prezzi[i] + " " + carburanti[i]);
         }
     }
+    public static void ricercaAuto(String marca, String modello) {
+        for (int i = 0; i < marche.length; i++) {
+            if (marche[i].equals(marca) && modelli[i].equals(modello)) {
+                System.out.println("Auto trovata: " + marche[i] + " " + modelli[i] + " " + prezzi[i] + " " + carburanti[i]);
+                return;
+            }
+        }
+        System.out.println("Auto non trovata.");
+    }
