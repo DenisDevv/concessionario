@@ -1,21 +1,85 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     static String[] marche = new String[0];
     static String[] modelli = new String[0];
     static double[] prezzi = new double[0];
     static String[] carburanti = new String[0];
+    static Boolean inEsecuzione = true;
 
     public static void main(String[] args) {
-        aggiungiAuto("Fiat", "Panda", 10000, "Benzina");
-        aggiungiAuto("Volkswagen", "Golf", 20000, "Diesel");
-        visualizzaAuto();
-        ricercaAuto("Fiat", "Panda");
-        cancellaAuto("Fiat", "Panda");
-        modificaAuto("Volkswagen", "Golf", "Volkswagen", "Golf GTI", 25000, "Benzina");
-        visualizzaAutoInOrdineCrescente();
-        visualizzaModelliDiesel();
+        Scanner scanner = new Scanner(System.in);
+        while (inEsecuzione) {
+            System.out.println("1. Aggiungi auto");
+            System.out.println("2. Visualizza auto");
+            System.out.println("3. Ricerca auto");
+            System.out.println("4. Cancella auto");
+            System.out.println("5. Modifica auto");
+            System.out.println("6. Visualizza auto in ordine crescente");
+            System.out.println("7. Visualizza modelli diesel");
+            System.out.println("8. Esci");
+            System.out.print("Scegli un'opzione: ");
+            int scelta = scanner.nextInt();
+            switch (scelta) {
+                case 1:
+                    System.out.print("Inserisci la marca: ");
+                    String marca = scanner.next();
+                    System.out.print("Inserisci il modello: ");
+                    String modello = scanner.next();
+                    System.out.print("Inserisci il prezzo: ");
+                    double prezzo = scanner.nextDouble();
+                    System.out.print("Inserisci il carburante: ");
+                    String carburante = scanner.next();
+                    aggiungiAuto(marca, modello, prezzo, carburante);
+                    break;
+                case 2:
+                    visualizzaAuto();
+                    break;
+                case 3:
+                    System.out.print("Inserisci la marca: ");
+                    String marcaRicerca = scanner.next();
+                    System.out.print("Inserisci il modello: ");
+                    String modelloRicerca = scanner.next();
+                    ricercaAuto(marcaRicerca, modelloRicerca);
+                    break;
+                case 4:
+                    System.out.print("Inserisci la marca: ");
+                    String marcaCancella = scanner.next();
+                    System.out.print("Inserisci il modello: ");
+                    String modelloCancella = scanner.next();
+                    cancellaAuto(marcaCancella, modelloCancella);
+                    break;
+                case 5:
+                    System.out.print("Inserisci la marca e il modello dell'auto da modificare: ");
+                    String marcaVecchia = scanner.next();
+                    String modelloVecchio = scanner.next();
+                    System.out.print("Inserisci la nuova marca: ");
+                    String marcaNuova = scanner.next();
+                    System.out.print("Inserisci il nuovo modello: ");
+                    String modelloNuovo = scanner.next();
+                    System.out.print("Inserisci il nuovo prezzo: ");
+                    double prezzoNuovo = scanner.nextDouble();
+                    System.out.print("Inserisci il nuovo carburante: ");
+                    String carburanteNuovo = scanner.next();
+                    modificaAuto(marcaVecchia, modelloVecchio, marcaNuova, modelloNuovo, prezzoNuovo, carburanteNuovo);
+                    break;
+                case 6:
+                    visualizzaAutoInOrdineCrescente();
+                    break;
+                case 7:
+                    visualizzaModelliDiesel();
+                    break;
+                case 8:
+                    inEsecuzione = false;
+                    break;
+                default:
+                    System.out.println("Opzione non valida.");
+            }
+        }
+        scanner.close();
     }
+
     public static void aggiungiAuto(String marca, String modello, double prezzo, String carburante) {
         marche = Arrays.copyOf(marche, marche.length + 1);
         modelli = Arrays.copyOf(modelli, modelli.length + 1);
@@ -27,11 +91,13 @@ public class Main {
         prezzi[prezzi.length - 1] = prezzo;
         carburanti[carburanti.length - 1] = carburante;
     }
+
     public static void visualizzaAuto() {
         for (int i = 0; i < marche.length; i++) {
             System.out.println(marche[i] + " " + modelli[i] + " " + prezzi[i] + " " + carburanti[i]);
         }
     }
+
     public static void ricercaAuto(String marca, String modello) {
         for (int i = 0; i < marche.length; i++) {
             if (marche[i].equals(marca) && modelli[i].equals(modello)) {
@@ -41,6 +107,7 @@ public class Main {
         }
         System.out.println("Auto non trovata.");
     }
+
     public static void cancellaAuto(String marca, String modello) {
         for (int i = 0; i < marche.length; i++) {
             if (marche[i].equals(marca) && modelli[i].equals(modello)) {
@@ -49,6 +116,7 @@ public class Main {
             }
         }
     }
+
     public static void modificaAuto(String marcaVecchia, String modelloVecchio, String marcaNuova, String modelloNuovo, double prezzoNuovo, String carburanteNuovo) {
         for (int i = 0; i < marche.length; i++) {
             if (marche[i].equals(marcaVecchia) && modelli[i].equals(modelloVecchio)) {
@@ -60,6 +128,7 @@ public class Main {
             }
         }
     }
+
     public static void visualizzaAutoInOrdineCrescente() {
         int n = prezzi.length;
         for (int i = 0; i < n - 1; i++) {
@@ -71,6 +140,7 @@ public class Main {
         }
         visualizzaAuto();
     }
+
     public static void visualizzaModelliDiesel() {
         for (int i = 0; i < marche.length; i++) {
             if (carburanti[i].equalsIgnoreCase("Diesel")) {
@@ -78,6 +148,7 @@ public class Main {
             }
         }
     }
+
     private static void rimuoviElemento(int index) {
         if (index < 0 || index >= marche.length) return;
 
@@ -101,6 +172,7 @@ public class Main {
         prezzi = nuoviPrezzi;
         carburanti = nuoviCarburanti;
     }
+
     private static void scambiaElementi(int i, int j) {
         String tempMarca = marche[i];
         marche[i] = marche[j];
