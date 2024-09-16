@@ -16,3 +16,14 @@ public class Main {
         visualizzaAutoInOrdineCrescente();
         visualizzaModelliDiesel();
     }
+    public static void aggiungiAuto(String marca, String modello, double prezzo, String carburante) {
+        marche = Arrays.copyOf(marche, marche.length + 1);
+        modelli = Arrays.copyOf(modelli, modelli.length + 1);
+        prezzi = Arrays.copyOf(prezzi, prezzi.length + 1);
+        carburanti = Arrays.copyOf(carburanti, carburanti.length + 1);
+
+        marche[marche.length - 1] = marca;
+        modelli[modelli.length - 1] = modello;
+        prezzi[prezzi.length - 1] = prezzo;
+        carburanti[carburanti.length - 1] = carburante;
+    }
