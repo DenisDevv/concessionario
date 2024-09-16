@@ -71,3 +71,10 @@ public class Main {
         }
         visualizzaAuto();
     }
+    public static void visualizzaModelliDiesel() {
+        for (int i = 0; i < marche.length; i++) {
+            if (carburanti[i].equalsIgnoreCase("Diesel")) {
+                System.out.println(marche[i] + " " + modelli[i] + " " + prezzi[i] + " " + carburanti[i]);
+            }
+        }
+    }
