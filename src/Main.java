@@ -78,3 +78,26 @@ public class Main {
             }
         }
     }
+    private static void rimuoviElemento(int index) {
+        if (index < 0 || index >= marche.length) return;
+
+        String[] nuoveMarche = new String[marche.length - 1];
+        String[] nuoviModelli = new String[modelli.length - 1];
+        double[] nuoviPrezzi = new double[prezzi.length - 1];
+        String[] nuoviCarburanti = new String[carburanti.length - 1];
+
+        for (int i = 0, j = 0; i < marche.length; i++) {
+            if (i != index) {
+                nuoveMarche[j] = marche[i];
+                nuoviModelli[j] = modelli[i];
+                nuoviPrezzi[j] = prezzi[i];
+                nuoviCarburanti[j] = carburanti[i];
+                j++;
+            }
+        }
+
+        marche = nuoveMarche;
+        modelli = nuoviModelli;
+        prezzi = nuoviPrezzi;
+        carburanti = nuoviCarburanti;
+    }
