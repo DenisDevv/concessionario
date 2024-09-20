@@ -1,5 +1,4 @@
 package catalogo;
-
 import java.util.Arrays;
 
 public class Funzioni {
@@ -12,7 +11,6 @@ public class Funzioni {
         modelli = Arrays.copyOf(modelli, modelli.length + 1);
         prezzi = Arrays.copyOf(prezzi, prezzi.length + 1);
         carburanti = Arrays.copyOf(carburanti, carburanti.length + 1);
-
         marche[marche.length - 1] = marca;
         modelli[modelli.length - 1] = modello;
         prezzi[prezzi.length - 1] = prezzo;

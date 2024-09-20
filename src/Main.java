@@ -2,9 +2,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 import catalogo.Funzioni;
 public class Main {
-    Funzioni funzioni = new Funzioni();
     static Boolean inEsecuzione = true;
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while (inEsecuzione) {
