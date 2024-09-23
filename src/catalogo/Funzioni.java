@@ -16,27 +16,24 @@ public class Funzioni {
         prezzi[prezzi.length - 1] = prezzo;
         carburanti[carburanti.length - 1] = carburante;
     }
-    public static void visualizzaAuto() {
+    public static String visualizzaAuto() {
+        String ris = "";
         for (int i = 0; i < marche.length; i++) {
-            System.out.println(marche[i] + " " + modelli[i] + " " + prezzi[i] + " " + carburanti[i]);
+             ris += marche[i] + " " + modelli[i] + " " + prezzi[i] + " " + carburanti[i] + "\n";
         }
+        return ris;
     }
-    public static void ricercaAuto(String marca, String modello) {
-        for (int i = 0; i < marche.length; i++) {
-            if (marche[i].equals(marca) && modelli[i].equals(modello)) {
-                System.out.println("Auto trovata: " + marche[i] + " " + modelli[i] + " " + prezzi[i] + " " + carburanti[i]);
-                return;
-            }
+    public static String ricercaAuto(String marca, String modello) {
+        int i = Funzioni.ricerca(marca, modello);
+        if (i != -1) {
+            return marche[i] + " " + modelli[i] + " " + prezzi[i] + " " + carburanti[i];
+        } else {
+            return "Auto non trovata.";
         }
-        System.out.println("Auto non trovata.");
     }
     public static void cancellaAuto(String marca, String modello) {
-        for (int i = 0; i < marche.length; i++) {
-            if (marche[i].equals(marca) && modelli[i].equals(modello)) {
-                rimuoviElemento(i);
-                return;
-            }
-        }
+        int i = Funzioni.ricerca(marca, modello);
+        Funzioni.rimuoviElemento(i);
     }
     public static void modificaAuto(String marcaVecchia, String modelloVecchio, String marcaNuova, String modelloNuovo, double prezzoNuovo, String carburanteNuovo) {
         for (int i = 0; i < marche.length; i++) {
@@ -58,14 +55,14 @@ public class Funzioni {
                 }
             }
         }
-        Funzioni.visualizzaAuto();
     }
-    public static void visualizzaModelliDiesel() {
+    public static String visualizzaModelliDiesel() {
         for (int i = 0; i < marche.length; i++) {
             if (carburanti[i].equalsIgnoreCase("Diesel")) {
-                System.out.println(marche[i] + " " + modelli[i] + " " + prezzi[i] + " " + carburanti[i]);
+                return marche[i] + " " + modelli[i] + " " + prezzi[i] + " " + carburanti[i];
             }
         }
+        return "Nessun modello Diesel trovato.";
     }
     private static void rimuoviElemento(int index) {
         if (index < 0 || index >= marche.length) return;
@@ -107,5 +104,13 @@ public class Funzioni {
         String tempCarburante = carburanti[i];
         carburanti[i] = carburanti[j];
         carburanti[j] = tempCarburante;
+    }
+    private static int ricerca(String marca, String modello) {
+        for (int i = 0; i < marche.length; i++) {
+            if (marche[i].equals(marca) && modelli[i].equals(modello)) {
+                return i;
+            }
+        }
+        return -1;
     }
 }

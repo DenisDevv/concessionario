@@ -28,14 +28,14 @@ public class Main {
                     Funzioni.aggiungiAuto(marca, modello, prezzo, carburante);
                     break;
                 case 2:
-                    Funzioni.visualizzaAuto();
+                    System.out.println(Funzioni.visualizzaAuto());
                     break;
                 case 3:
                     System.out.print("Inserisci la marca: ");
                     String marcaRicerca = scanner.next();
                     System.out.print("Inserisci il modello: ");
                     String modelloRicerca = scanner.next();
-                    Funzioni.ricercaAuto(marcaRicerca, modelloRicerca);
+                    System.out.println(Funzioni.ricercaAuto(marcaRicerca, modelloRicerca));
                     break;
                 case 4:
                     System.out.print("Inserisci la marca: ");
@@ -62,7 +62,7 @@ public class Main {
                     Funzioni.visualizzaAutoInOrdineCrescente();
                     break;
                 case 7:
-                    Funzioni.visualizzaModelliDiesel();
+                    System.out.println(Funzioni.visualizzaModelliDiesel());
                     break;
                 case 8:
                     inEsecuzione = false;
